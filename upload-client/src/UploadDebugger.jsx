@@ -48,22 +48,23 @@ function UploadDebugger() {
   };
 
   return (
-    <div className="container mt-5">
+  <div className="app">
+    <div className="container">
 
-      <h1 className="text-center mb-4">
+      <h1 className="title">
         Cloudinary Upload Debugger
       </h1>
 
-      <div className="card p-4 shadow">
+      <div className="card">
 
         <input
           type="file"
-          className="form-control mb-3"
+          className="file-input"
           onChange={(e) => setFile(e.target.files[0])}
         />
 
         <button
-          className="btn btn-primary"
+          className="upload-btn"
           onClick={uploadFile}
         >
           Upload Image
@@ -71,11 +72,13 @@ function UploadDebugger() {
 
       </div>
 
-      <div className="card mt-4 p-3 shadow">
+      <div className="card">
 
-        <h4>Request Timeline</h4>
+        <h4 className="section-title">
+          Request Timeline
+        </h4>
 
-        <ul>
+        <ul className="logs">
           {logs.map((log, index) => (
             <li key={index}>{log}</li>
           ))}
@@ -84,25 +87,28 @@ function UploadDebugger() {
       </div>
 
       {imageUrl && (
-        <div className="card mt-4 p-3 shadow">
+        <div className="card">
 
-          <h4>Cloudinary Result</h4>
+          <h4 className="section-title">
+            Cloudinary Result
+          </h4>
 
           <img
             src={imageUrl}
             alt="uploaded"
-            className="img-fluid rounded"
+            className="preview-image"
           />
 
-          <p className="mt-3">
-            <strong>Public ID:</strong>
-            {publicId}
+          <p className="public-id">
+            <strong>Public ID:</strong> {publicId}
           </p>
 
         </div>
       )}
+
     </div>
-  );
+  </div>
+);
 }
 
 export default UploadDebugger;
